@@ -1,11 +1,12 @@
 # Deploying DeepSeek R1 Models Using Modal and OpenWebUI
 
 ## Introduction
-Deploying machine learning models can be complex, especially when dealing with varying model sizes and ensuring scalability. The GitHub repository by mohsiniscoding aims to simplify this process by providing a production-ready setup for deploying DeepSeek R1 models using Modal and OpenWebUI.
+Deploying machine learning models can be complex, especially when dealing with varying model sizes and ensuring scalability. The GitHub repository by mohsiniscoding aims to simplify this process by providing a production-ready setup for deploying DeepSeek R1 models using Modal, Ollama and OpenWebUI.
 
 ### Tools Overview
 - **Modal**: A cloud platform designed for deploying machine learning models, offering flexibility in scaling resources based on model size.
 - **OpenWebUI**: Developed by togethercomputer, it is an open-source project focused on creating user-friendly interfaces for interacting with AI models.
+- **Ollama**: A lightweight, easy-to-use, and open-source server for running large language models.
 
 ## Key Features of the Repository
 
@@ -19,10 +20,8 @@ Deploying machine learning models can be complex, especially when dealing with v
    - Offers support for different GPU options (T4 and A100), ensuring that larger models with higher parameter counts can be efficiently deployed.
 
 4. **Enterprise Readiness**:
-   - Includes features like logging, error handling, and encrypted secrets management, essential for secure and stable production environments.
+   - Includes features like logging, error handling, and a secure and stable production environment.
 
-5. **Security**:
-   - Ensures data security through encrypted secrets management, crucial for protecting sensitive information in production setups.
 
 ## Deployment Steps
 
@@ -33,9 +32,9 @@ Deploying machine learning models can be complex, especially when dealing with v
    ```
 
 2. **Install Dependencies** (locally, if needed):
+   - Install modal
    ```bash
-   pip install -r requirements.txt
-   pip install modal  # Required for deployment
+    pip install modal  
    ```
 
 3. **Configure the Model**:
@@ -49,7 +48,7 @@ Deploying machine learning models can be complex, especially when dealing with v
    ```
 
 5. **Access OpenWebUI**:
-   - Once deployed, Modal provides a public URL accessible via port 8080 by default.
+   - Once deployed, Modal provides a public URL accessible (even prior to launching ollama or openwebui)
 
 ## Troubleshooting
 
