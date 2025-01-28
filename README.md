@@ -1,7 +1,5 @@
 # DeepSeek R1 - OpenWebUI Deployment via Modal
 
-[![Deploy on Modal](https://modal.com/button.svg)](https://modal.com)
-
 This repository by [@mohsiniscoding](https://github.com/mohsiniscoding) provides a production-ready deployment of DeepSeek R1 models using [Modal](https://modal.com) with integrated [Open-WebUI](https://github.com/togethercomputer/OpenWebUI).
 
 ## 🚀 Key Features
