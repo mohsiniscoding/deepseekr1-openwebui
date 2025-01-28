@@ -1,66 +1,81 @@
-# DeepSeek R1 - OpenWebUI Deployment via Modal
+# Deploying DeepSeek R1 Models Using Modal and OpenWebUI
 
-[![Deploy on Modal](https://modal.com/button.svg)](https://modal.com)
+## Introduction
+Deploying machine learning models can be complex, especially when dealing with varying model sizes and ensuring scalability. The GitHub repository by mohsiniscoding aims to simplify this process by providing a production-ready setup for deploying DeepSeek R1 models using Modal and OpenWebUI.
 
-This repository by [@mohsiniscoding](https://github.com/mohsiniscoding) provides a production-ready deployment of DeepSeek R1 models using [Modal](https://modal.com) with integrated [Open-WebUI](https://github.com/togethercomputer/OpenWebUI).
+### Tools Overview
+- **Modal**: A cloud platform designed for deploying machine learning models, offering flexibility in scaling resources based on model size.
+- **OpenWebUI**: Developed by togethercomputer, it is an open-source project focused on creating user-friendly interfaces for interacting with AI models.
 
-## 🚀 Key Features
+## Key Features of the Repository
 
-- **Multi-model Support**: Deploy 1.5B to 671B parameter models
-- **Persistent Storage**: Automatic model caching with Modal volumes
-- **GPU Optimization**: Configurable GPU allocations (T4/A100)
-- **Enterprise Ready**: Built-in logging and error handling
-- **Secure**: Encrypted secrets management
+1. **Multi-model Support**:
+   - The repository supports models ranging from 1.5B to 671B parameters, accommodating various deployment needs.
 
-## TODO
-- [ ] Determine the GPU configuration for models other than 70B parameter.
-- [ ] Ability to persist chat and openwebui sessions across restarts.
-- [ ] Add more...
+2. **Persistent Storage**:
+   - Utilizes Modal volumes to cache models persistently across restarts, reducing the need for repeated downloads and saving time.
 
-## 📦 Quick Deployment
+3. **GPU Optimization**:
+   - Offers support for different GPU options (T4 and A100), ensuring that larger models with higher parameter counts can be efficiently deployed.
 
-### Prerequisites
-- Python 3.11+
-- [Modal Account](https://modal.com/signup)
-- CLI Access
+4. **Enterprise Readiness**:
+   - Includes features like logging, error handling, and encrypted secrets management, essential for secure and stable production environments.
 
-### Installation
+5. **Security**:
+   - Ensures data security through encrypted secrets management, crucial for protecting sensitive information in production setups.
 
-1. Clone the Repository:  
-   git clone https://github.com/mohsiniscoding/deepseekr1-openwebui.git  
+## Deployment Steps
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/mohsiniscoding/deepseekr1-openwebui.git
    cd deepseekr1-openwebui
+   ```
 
-2. Install Dependencies (Locally, Optional):  
+2. **Install Dependencies** (locally, if needed):
+   ```bash
    pip install -r requirements.txt
-   pip install modal (required for deployment)
+   pip install modal  # Required for deployment
+   ```
 
-3. Configure the Model:  
-   • In handler.py, set your desired model under the `MODEL` constant.  
-   • Ensure it exists in the `DEEPSEEK_R1_MODELS` mapping.
+3. **Configure the Model**:
+   - Edit `handler.py` to set your desired model under the `MODEL` constant.
+   - Ensure that the model exists in the `DEEPSEEK_R1_MODELS` mapping.
 
-4. Deploy the Modal App:  
-   • If you have Modal installed locally, run:  
-     modal token new  
-     modal serve handler.py  
-   • Alternatively, set up a CI-based deployment that invokes Modal in your environment.
+4. **Deploy Using Modal**:
+   ```bash
+   modal token new  # If not already authenticated
+   modal serve handler.py
+   ```
 
-5. Access Open-WebUI:  
-   • The web server runs on port 8080 by default.  
-   • Once deployment is complete, Modal provides a public URL. (before ollama or openwebui starts - copy it)
-
-## Model Caching
-
-• The container will pull your model into /root/models/.  
-• A Modal volume is mapped to this location, preserving downloads across restarts.
+5. **Access OpenWebUI**:
+   - Once deployed, Modal provides a public URL accessible via port 8080 by default.
 
 ## Troubleshooting
 
-• If Ollama fails to start or the model pull times out, try increasing the time.sleep() delay in handler.py.  
-• Check that your GPU is accessible within the Modal environment and meets model VRAM requirements.  
-• Confirm your secrets and environment variables align with your usage patterns (if you are using custom endpoints or tokens).
+- **Ollama Issues**: If Ollama fails to start or models take too long to pull, consider increasing the `time.sleep()` delay in `handler.py`.
+- **GPU Configuration**: Ensure your GPU is properly configured and meets the VRAM requirements for your model size.
+- **Secrets Management**: Verify that all secrets and environment variables are correctly set up for seamless operation.
+
+## Future Enhancements
+
+1. **Determine GPU Configurations**:
+   - Investigate GPU settings for models beyond 70B parameters to optimize hardware usage.
+
+2. **Session Persistence**:
+   - Develop features to save chat sessions and maintain OpenWebUI sessions across system restarts.
+
+3. **Additional Features**:
+   - Explore adding more functionalities as needed, enhancing the deployment experience further.
 
 ## Contributing
 
-1. Fork the repository and create your branch from main.  
-2. Commit changes, then open a pull request for review.  
+To contribute to this project:
 
+1. Fork the repository.
+2. Create a new branch from `main`.
+3. Make your changes.
+4. Commit and push your branch.
+5. Open a pull request for review.
+
+This setup provides a robust framework for deploying DeepSeek R1 models in production, leveraging Modal's scalability and OpenWebUI's interface capabilities. While some specifics like model configuration details may require further exploration, the repository offers a solid foundation for deployment needs.
